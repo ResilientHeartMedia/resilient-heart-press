@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=bTno94"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=bTno94" type="text/css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=fl1ug6"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=fl1ug6" type="text/css">
 
   
   
@@ -345,27 +345,110 @@
         </div>
         <div class="row justify-content-center mt-4">
             <div class="col-lg-8 mx-auto mbr-form">
-                <form action="https://joellehabbaki.us1.list-manage.com/subscribe/post?u=6edda648c567d2ed6d236d78a&amp;id=604c50e152&amp;f_id=0050cae4f0" method="POST" class="mbr-form form-with-styler mx-auto" data-verified="https://joellehabbaki.us1.list-manage.com/subscribe/post?u=6edda648c567d2ed6d236d78a&amp;id=604c50e152&amp;f_id=0050cae4f0">
+                <form action="https://joellehabbaki.us1.list-manage.com/subscribe/post?u=6edda648c567d2ed6d236d78a&amp;id=604c50e152&amp;f_id=0050cae4f0" name="mc-embedded-subscribe-form" method="POST" class="rhp-vip-form mbr-form form-with-styler mx-auto" onsubmit="return rhpVipSubscribe(this,event)">
                     <div class="row">
-                        
-                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops...! some problem!</div>
+                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">You’re on the list!</div>
+                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">We couldn’t add you just now. Please try again.</div>
                     </div>
                     <div class="dragArea row">
                         <div class="col-lg-12">
                             <p class="mbr-text mbr-fonts-style align-center mb-4 display-7"> Exclusive notifications on upcoming releases, book events, and behind-the-scenes perks.</p>
                         </div>
-                        <div class="col-lg-4 col-md-12 col-sm-12 form-group mb-3" data-for="name">
-                            <input type="text" name="name" placeholder="Name" data-form-field="name" class="form-control" value="" id="name-form9-story-expands">
+                        <div class="col-lg-4 col-md-12 col-sm-12 form-group mb-3" data-for="FNAME">
+                            <input type="text" name="FNAME" placeholder="Name" data-form-field="FNAME" class="form-control" autocomplete="given-name" value="" id="FNAME-form9-story-expands">
                         </div>
-                        <div data-for="email" class="col-lg-4 col-md-12 col-sm-12 form-group mb-3">
-                            <input type="email" name="email" placeholder="Email" data-form-field="email" class="form-control" value="" id="email-form9-story-expands">
+                        <div data-for="EMAIL" class="col-lg-4 col-md-12 col-sm-12 form-group mb-3">
+                            <input type="email" name="EMAIL" placeholder="Email" data-form-field="EMAIL" class="form-control" autocomplete="email" required="" value="" id="EMAIL-form9-story-expands">
                         </div>
-                        <div class="col-lg-4 col-md-12 col-sm-12 mbr-section-btn align-center"><button type="submit" class="btn btn-primary display-4">JOIN THE LIST</button></div>
+                        
+                        <input type="hidden" name="tags" value="6412514" id="tags-form9-story-expands">
+                        <div aria-hidden="true" style="position:absolute;left:-5000px;">
+                            <input type="text" name="b_6edda648c567d2ed6d236d78a_604c50e152" tabindex="-1" value="" id="b_6edda648c567d2ed6d236d78a_604c50e152-form9-story-expands">
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12 mbr-section-btn align-center"><button type="submit" class="btn btn-primary">JOIN THE LIST</button></div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+<script>
+window.rhpVipSubscribe = window.rhpVipSubscribe || function(form, event) {
+    if (event) event.preventDefault();
+
+    var success = form.querySelector('[data-form-alert]');
+    var error = form.querySelector('[data-form-alert-danger]');
+    var email = form.querySelector('[name="EMAIL"]');
+
+    function hideAlerts() {
+        if (success) success.setAttribute('hidden', 'hidden');
+        if (error) error.setAttribute('hidden', 'hidden');
+    }
+
+    function showAlert(el, message) {
+        if (!el) return;
+        el.textContent = message;
+        el.removeAttribute('hidden');
+        el.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+    }
+
+    hideAlerts();
+
+    if (!email || !email.checkValidity()) {
+        if (email) email.reportValidity();
+        return false;
+    }
+
+    var callbackName = 'rhpVip_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
+    var url = new URL(form.action);
+    url.pathname = url.pathname.replace('/subscribe/post', '/subscribe/post-json');
+
+    var formData = new FormData(form);
+    formData.forEach(function(value, key) {
+        if (value !== '') url.searchParams.set(key, value);
+    });
+    url.searchParams.set('c', callbackName);
+
+    var script = document.createElement('script');
+    var timeout;
+
+    function cleanup() {
+        if (timeout) clearTimeout(timeout);
+        if (script.parentNode) script.parentNode.removeChild(script);
+        try { delete window[callbackName]; } catch (e) { window[callbackName] = undefined; }
+    }
+
+    window[callbackName] = function(response) {
+        var raw = response && response.msg ? response.msg : '';
+        var holder = document.createElement('div');
+        holder.innerHTML = raw;
+        var cleanMessage = holder.textContent || holder.innerText || raw;
+
+        if (response && response.result === 'success') {
+            showAlert(success, "You're on the list! Thank you for joining the Resilient Heart Press VIP Readers.");
+            form.reset();
+        } else if (/already subscribed/i.test(cleanMessage)) {
+            showAlert(success, "You're already on the list. We're glad you're here!");
+        } else {
+            showAlert(error, cleanMessage || "We couldn't add you just now. Please check your email address and try again.");
+        }
+        cleanup();
+    };
+
+    script.onerror = function() {
+        showAlert(error, "We couldn't add you just now. Please try again in a moment.");
+        cleanup();
+    };
+
+    timeout = setTimeout(function() {
+        showAlert(error, "We couldn't add you just now. Please try again in a moment.");
+        cleanup();
+    }, 12000);
+
+    script.src = url.toString();
+    document.head.appendChild(script);
+    return false;
+};
+</script>
 </section>
 
 <section data-bs-version="5.1" class="footer3 cid-footpulse" once="footers" id="footer3-pulse-article">
@@ -410,7 +493,7 @@
             </div>
         </div>
     </div>
-</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/4790409" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com"> Website Builder Software</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
+</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/4790409" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/offline-website-builder.html">Offline Website Builder</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
   
   
 </body>
